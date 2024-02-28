@@ -4,6 +4,8 @@ import { getPokemonList } from "../lib/pokemon";
 import * as styles from "./page.css";
 import { Suspense } from "react";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const pokemon = await getPokemonList();
 
