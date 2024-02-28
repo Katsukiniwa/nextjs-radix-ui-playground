@@ -11,10 +11,11 @@ export default async function Home() {
 
   return (
     <main>
-      <h1>Pokemon</h1>
+      <h1 className={styles.title}>Pokemon</h1>
 
       <div className={styles.select}>
         <SelectDemo
+          defaultValue={pokemon.results[0].name}
           label="pokemon"
           items={pokemon.results.map((r) => ({ name: r.name, value: r.name }))}
         />

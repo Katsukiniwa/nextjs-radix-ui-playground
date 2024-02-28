@@ -29,16 +29,16 @@ const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(
 );
 SelectItem.displayName = "SelectItem";
 
-type SelectDemoProps = {
+type SelectDemoProps = ComponentPropsWithoutRef<typeof Select.Root> & {
   label: string;
   items: {
     value: string;
     name: string;
   }[];
 };
-const SelectDemo: FC<SelectDemoProps> = ({ label, items }) => (
-  <Select.Root>
-    <Select.Trigger className="SelectTrigger" aria-label="Food">
+const SelectDemo: FC<SelectDemoProps> = ({ label, items, ...props }) => (
+  <Select.Root {...props}>
+    <Select.Trigger className="SelectTrigger" aria-label="trigger">
       <Select.Value placeholder="Select..." />
       <Select.Icon className="SelectIcon">
         <ChevronDownIcon />
