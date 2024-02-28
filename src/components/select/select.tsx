@@ -30,13 +30,12 @@ const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(
 SelectItem.displayName = "SelectItem";
 
 type SelectDemoProps = ComponentPropsWithoutRef<typeof Select.Root> & {
-  label: string;
   items: {
     value: string;
     name: string;
   }[];
 };
-const SelectDemo: FC<SelectDemoProps> = ({ label, items, ...props }) => (
+const SelectDemo: FC<SelectDemoProps> = ({ items, ...props }) => (
   <Select.Root {...props}>
     <Select.Trigger className="SelectTrigger" aria-label="trigger">
       <Select.Value placeholder="Select..." />
@@ -51,7 +50,6 @@ const SelectDemo: FC<SelectDemoProps> = ({ label, items, ...props }) => (
         </Select.ScrollUpButton>
         <Select.Viewport className="SelectViewport">
           <Select.Group>
-            <Select.Label className="SelectLabel">{label}</Select.Label>
             {items.map((item) => (
               <SelectItem key={item.value} value={item.value}>
                 {item.name}

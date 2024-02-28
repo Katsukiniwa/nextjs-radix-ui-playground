@@ -1,5 +1,10 @@
 import { style } from '@vanilla-extract/css'
 
+export const container = style({
+  padding: '12px',
+  backgroundColor: 'cornsilk'
+})
+
 export const title = style({
   margin: 0,
 })
@@ -11,5 +16,5 @@ export const section = style({
 })
 
 export const select = style({
-  marginBottom: '20px'
+  margin: '20px 0'
 })

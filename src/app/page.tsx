@@ -10,21 +10,16 @@ export default async function Home() {
   const pokemon = await getPokemonList();
 
   return (
-    <main>
+    <main className={styles.container}>
       <h1 className={styles.title}>Pokemon</h1>
 
       <div className={styles.select}>
         <SelectDemo
           defaultValue={pokemon.results[0].name}
-          label="pokemon"
           items={pokemon.results.map((r) => ({ name: r.name, value: r.name }))}
         />
       </div>
 
-      <p>
-        SuspenseとPoke
-        API呼び出し時のsleep(id*1000)の組み合わせでidが若い順に表示されるようにしています
-      </p>
       <section className={styles.section}>
         {pokemon.results.map((p) => (
           <Suspense key={p.name} fallback={<p>Loading data...</p>}>
