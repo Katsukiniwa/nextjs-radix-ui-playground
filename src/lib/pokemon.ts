@@ -1,16 +1,16 @@
 import { PokemonDetail } from "@/types"
 
 export const getPokemonList = async () => {
-  const tmp = await fetch('https://pokeapi.co/api/v2/pokemon', {
+  const res = await fetch('https://pokeapi.co/api/v2/pokemon', {
     method: 'GET',
     headers: {
       'Accept': 'application/json'
     }
-  })
+  }).then(res => res.json())
 
   // await new Promise((resolve) => setTimeout(resolve, 3000));
 
-  const json: {
+  return res as {
     count: number,
     next: string,
     previous: string,
@@ -19,22 +19,18 @@ export const getPokemonList = async () => {
       url: string
     }[]
   }
-    = await tmp.json()
-
-  return json
 }
 
 export const getPokemonDetail = async (id: number) => {
   await new Promise((resolve) => setTimeout(resolve, id * 200));
 
-  const tmp = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
+  const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json'
     }
-  })
-  const json = await tmp.json()
+  }).then(res => res.json())
 
-  return json as PokemonDetail
+  return res as PokemonDetail
 }
 
