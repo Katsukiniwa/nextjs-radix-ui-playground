@@ -7,7 +7,9 @@ export const getPokemonList = async () => {
       'Accept': 'application/json'
     }
   })
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
+
   const json: {
     count: number,
     next: string,
@@ -23,6 +25,8 @@ export const getPokemonList = async () => {
 }
 
 export const getPokemonDetail = async (id: number) => {
+  await new Promise((resolve) => setTimeout(resolve, id * 1000));
+
   const tmp = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
     method: 'GET',
     headers: {
